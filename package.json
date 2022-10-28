@@ -1,0 +1,40 @@
+{
+  "name": "shecancode-attendance-backend",
+  "version": "1.0.0",
+  "description": "\"This is SheCanCode online attendance system\"",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start": "nodemon --exec babel-node ./server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Igire-Rwanda/SheCanCODE-attendance-backend.git"
+  },
+  "author": "SheCanCode Attendance",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Igire-Rwanda/SheCanCODE-attendance-backend/issues"
+  },
+  "homepage": "https://github.com/Igire-Rwanda/SheCanCODE-attendance-backend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/node": "^7.20.0",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/register": "^7.18.9",
+    "@types/node": "^18.11.7",
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20",
+    "validator": "^13.7.0"
+  }
+}
