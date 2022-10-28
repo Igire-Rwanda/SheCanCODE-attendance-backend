@@ -1,0 +1,33 @@
+{
+  "name": "attendance-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev-start":"nodemon --exec babel-node ./server.js",
+    "start": "node server.js"
+  },
+  "author": "SheCanCode Attendance Backend",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/node": "^7.19.1",
+    "@babel/plugin-transform-runtime": "^7.19.6",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/register": "^7.18.9",
+    "@types/node": "^18.11.7",
+    "body-parser": "^1.20.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemon": "^2.0.20",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4"
+  }
+}
