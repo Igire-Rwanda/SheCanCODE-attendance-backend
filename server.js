@@ -11,7 +11,7 @@ app.use (cors())
 
 app.use(bodyParser.json());
 
-app.use("/",route);
+app.use("/v1/attendance",route);
 
 
 const dbUrl=process.env.DATABASEURL;
