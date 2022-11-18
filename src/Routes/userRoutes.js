@@ -4,7 +4,8 @@ import UserController from "../controller/UserController";
 
 const route = express.Router();
 
-
+route.post("/login", UserController.login);
+route.get("/login", UserController.login);
 route.post("/create",UserController.createUser);
 route.get("/oneUser/:id",UserController.getOneUser);
 route.get("/getAll",UserController.getAllUser);
