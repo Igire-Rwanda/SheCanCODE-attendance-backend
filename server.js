@@ -6,7 +6,7 @@ import dotenv from "dotenv";
 import route from "./src/Routes/index"
 import User from "./src/models/UserModels";
 import bcrypt, { hashSync } from 'bcrypt';
-import jwt from 'jsonwebtoken';
+
 
 
 dotenv.config ();
@@ -28,6 +28,12 @@ const createSuperAdmin = async()=>{
      role:"SuperAdmin"
      
   })
+//   userSchema.path('email').validate(async (email)=>{
+//     const emailCount = await mongoose.models.Users.countDocuments({ email })
+//     return !emailCount
+//   },'email used')
+
+  
 
 admin.save();
  
