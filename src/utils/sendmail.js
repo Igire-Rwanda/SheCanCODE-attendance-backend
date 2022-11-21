@@ -29,7 +29,4 @@ emailtransporter.sendMail(details,  (err) =>{
 
 }
 
-
-
-
 export default sendEmail;
