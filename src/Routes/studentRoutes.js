@@ -11,6 +11,8 @@ route.get("/getAllStudent",StudentController.getAllStudents);
 route.patch("/updateStudent/:id",StudentController.updateOneStudentById);
 route.delete("/deleteStudent/:id",StudentController.deleteOneStudentById);
 
+route.post("/import",StudentController.importStudents);
+
 
 
 export default route;

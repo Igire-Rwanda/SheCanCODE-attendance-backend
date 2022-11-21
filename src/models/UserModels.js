@@ -1,5 +1,6 @@
 import mongoose from "mongoose"
 
+
 const userSchema = new mongoose.Schema(  
     {
     firstName: {
@@ -33,7 +34,7 @@ const userSchema = new mongoose.Schema(
        role:{
            type:String,
            default:"Mentor",
-           enum:["SuperAdmin","Mentor"]
+           enum:["SuperAdmin","Mentor","Student"]
        },
       
       status:{
@@ -50,6 +51,6 @@ const userSchema = new mongoose.Schema(
 
 );
 
-const User = mongoose.model('UserModels',userSchema)
+const User = mongoose.model('Users',userSchema)
 
 export default User;
