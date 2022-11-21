@@ -2,6 +2,7 @@ import mongoose from "mongoose"
 import express from "express";
 
 
+
 const userSchema = new mongoose.Schema(  
     {
     firstName: {
@@ -35,7 +36,7 @@ const userSchema = new mongoose.Schema(
        role:{
            type:String,
            default:"Mentor",
-           enum:["SuperAdmin","Mentor"]
+           enum:["SuperAdmin","Mentor","Student"]
        },
       
       status:{
@@ -48,10 +49,6 @@ const userSchema = new mongoose.Schema(
           timestamps: true,  
       }
 );
-
-
-
-
 
 const User = mongoose.model('Users',userSchema)
 

@@ -4,11 +4,11 @@ const attendanceSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.ObjectId,
-      ref: "UserModels",
+      ref: "Users",
     },
     student: {
       type: mongoose.Schema.ObjectId,
-      ref: "StudentsModels",
+      ref: "Students",
     },
    
     Duration:{
