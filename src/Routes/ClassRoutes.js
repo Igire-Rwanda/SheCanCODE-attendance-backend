@@ -1,4 +1,5 @@
 import express from "express";
+import { resourceLimits } from "worker_threads";
 import ClassController from "../controller/ClassController";
 
 
@@ -11,6 +12,7 @@ route.get("/getAllClasses",ClassController.getAllClasses);
 route.patch("/update/:id",ClassController.updateOneclassById);
 route.delete("/delete/:id",ClassController.deleteOneClassById);
 
+route.post("/addClass", ClassController.addClass);
 
 
 export default route;

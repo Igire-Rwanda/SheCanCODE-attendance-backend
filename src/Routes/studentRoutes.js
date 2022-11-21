@@ -13,4 +13,5 @@ route.delete("/deleteStudent/:id",StudentController.deleteOneStudentById);
 
 
 
+
 export default route;
