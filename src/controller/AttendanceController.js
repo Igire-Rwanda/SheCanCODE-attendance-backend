@@ -7,4 +7,4 @@ const getAllAttendance = handleCRUD.getAll(AttendanceModels);
 const updateAttendance = handleCRUD.updateOneById(AttendanceModels);
 const deleteAttendance = handleCRUD.deleteOneById(AttendanceModels);
 
-export default {createAttendance,getOneAttendance,getAllAttendance,updateAttendance,deleteAttendance};
+export default {createAttendance,getOneAttendance,getAllAttendance,updateAttendance,deleteAttendance}; 
