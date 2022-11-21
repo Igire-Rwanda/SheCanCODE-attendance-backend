@@ -1,6 +1,9 @@
 import StudentModels from "../models/StudentModels"
 import handleCRUD from "../utils/handleCRUD"
-
+import UserModel from '../models/UserModels'
+import mailUtil from '../utils/sendmail'
+import bcrypt from "bcrypt"
+import generator from 'generate-password'
 
 
 const createStudent = handleCRUD.createOne(StudentModels);
@@ -10,4 +13,37 @@ const updateOneStudentById = handleCRUD.updateOneById(StudentModels);
 const deleteOneStudentById = handleCRUD.deleteOneById(StudentModels);
 
 
-export default {createStudent,getOneStudent,getAllStudents,updateOneStudentById,deleteOneStudentById}
+const importStudents = async (req,res)=>{
+        const emails  = req.body.emails.split(",");
+
+
+     
+        
+
+        const students = emails.map((email)=>{
+            var password =generator.generate({
+                length:10,
+                numbers:true
+            
+            });
+            let hashedPassword=bcrypt.hashSync(password,10);
+            mailUtil(email,`Welcome!!your password for SheCanCODE attendance is ${password}`);
+            return {
+                email:email,
+                role:"Student",
+                password:hashedPassword};
+        }
+        
+        )
+       
+        await  UserModel.insertMany(students);
+        // console.log(students);
+        
+        
+}
+
+
+
+
+
+export default {createStudent,getOneStudent,getAllStudents,updateOneStudentById,deleteOneStudentById,importStudents}

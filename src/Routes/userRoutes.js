@@ -1,5 +1,6 @@
 import express from "express";
 import UserController from "../controller/UserController";
+import {checkUser,loginUser} from "../middlewares/dataChecker"
 
 
 const route = express.Router();

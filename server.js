@@ -9,6 +9,29 @@ import bcrypt from 'bcrypt';
 
 dotenv.config ();
 const app=express();
+const nodemailer = require("nodemailer");
+let mailtransporter = nodemailer.createTransport({
+    service:"gmail",
+    auth:{
+       user:"rinidegol08@gmail.com",
+       pass:"mounir&88"
+    }
+})
+
+let details = {
+    from:"rinidegol08@gmail.com",
+    to:"winniedisc@gmail.com",
+    subject:" Attendance ",
+    text:" Your Attendance has been approved!"
+}
+mailtransporter.sendEmail=(details,(err) => {
+    if(err){
+        console.log("It has an error",err)
+    } else{
+        console.log("Email sent successfully")
+    }
+})
+
 app.use (cors())
 
 app.use(bodyParser.json());
