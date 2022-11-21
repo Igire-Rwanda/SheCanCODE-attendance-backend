@@ -1,6 +1,7 @@
 import mongoose from "mongoose"
 import express from "express";
 
+
 const userSchema = new mongoose.Schema(  
     {
     firstName: {
