@@ -11,6 +11,18 @@ const getAllUser = handleCRUD.getAll(User);
 const updateOneUserById = handleCRUD.updateOneById(User);
 const deleteOneUserById = handleCRUD.deleteOneById(User);
 
+const addMentor =  (req,res)=>{
+    const addingMentor = new User({
+        firstName:req.body.firstName,
+         lastName : req.body.lastName,
+         email : req.body.email,
+         phone:req.body.phone,
+         password:bcrypt.hashSync(req.body.password,10),
+         role:"Mentor"
+     })
+     addingMentor.save();
+     return res.send({message:"user created", data:addingMentor});
+}
 
 const login = async(req, res) =>{
     try {
@@ -44,4 +56,5 @@ const login = async(req, res) =>{
 }
 
 
-export default {createUser,getOneUser,getAllUser,updateOneUserById,deleteOneUserById,login}
+
+export default {createUser,getOneUser,getAllUser,updateOneUserById,deleteOneUserById,addMentor,login}

@@ -6,6 +6,7 @@ const route = express.Router();
 
 route.post("/login", UserController.login);
 route.get("/login", UserController.login);
+route.post("/mentors", UserController.addMentor);
 route.post("/create",UserController.createUser);
 route.get("/oneUser/:id",UserController.getOneUser);
 route.get("/getAll",UserController.getAllUser);

@@ -18,6 +18,7 @@ app.use("/v1/attendance",route);
 const dbUrl=process.env.DATABASEURL;
 
 
+
 const createSuperAdmin = async()=>{
 
   const findUser = await User.findOne({email:process.env.email});
@@ -36,6 +37,8 @@ const createSuperAdmin = async()=>{
 mongoose.connect(dbUrl).then(()=>{
     console.log("Database connected successfully");
     createSuperAdmin()
+    
+   
 });
 
 const port=process.env.PORT ||4000;
