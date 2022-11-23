@@ -35,9 +35,8 @@ const importStudents = async (req,res)=>{
         }
         
         )
-       
         await  UserModel.insertMany(students);
-        // console.log(students);
+        return res.send({message:"Students Added!"});
         
         return res.send({message:"New emails Added"});
 }
