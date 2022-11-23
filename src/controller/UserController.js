@@ -2,6 +2,8 @@ import User from "../models/UserModels"
 import handleCRUD from "../utils/handleCRUD"
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import mailUtil from '../utils/sendmail'
+import generator from 'generate-password'
 
 
 
@@ -11,17 +13,36 @@ const getAllUser = handleCRUD.getAll(User);
 const updateOneUserById = handleCRUD.updateOneById(User);
 const deleteOneUserById = handleCRUD.deleteOneById(User);
 
-const addMentor =  (req,res)=>{
-    const addingMentor = new User({
+const addMentor = async (req,res)=>{
+
+
+    var password =generator.generate({
+        length:6,
+        numbers:true
+
+ });
+
+   
+    const addingMentor =  new User({
+      
         firstName:req.body.firstName,
          lastName : req.body.lastName,
          email : req.body.email,
          phone:req.body.phone,
-         password:bcrypt.hashSync(req.body.password,10),
+         password:bcrypt.hashSync(password,10),
          role:"Mentor"
      })
-     addingMentor.save();
-     return res.send({message:"user created", data:addingMentor});
+
+     
+     await addingMentor.save();
+
+     mailUtil(req.body.email,`welcome your password is ${password}`);
+
+    
+
+
+ return res.send({message:"Mentor Added successfully!", data:addingMentor});
+
 }
 
 const login = async(req, res) =>{
