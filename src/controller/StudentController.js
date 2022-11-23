@@ -14,7 +14,7 @@ const deleteOneStudentById = handleCRUD.deleteOneById(StudentModels);
 
 
 const importStudents = async (req,res)=>{
-        const emails  = req.body.emails.split(",");
+        const emails  = req.emails;
 
 
      
