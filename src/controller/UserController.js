@@ -55,7 +55,7 @@ const login = async(req, res) =>{
         if(findUser){
             const isPasswordValid = bcrypt.compareSync(password, findUser.password)
             if(isPasswordValid){
-                const token = await jwt.sign({email:findUser.email,role:findUser.role},"secret",{expiresIn:"30d"} );
+                const token = await jwt.sign({email:findUser.email,role:findUser.role, id:findUser._id},"secret",{expiresIn:"30d"} );
                 res.send({message:"Logged In",data:{
                     token:token,
                     email:findUser.email,

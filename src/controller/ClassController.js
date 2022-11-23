@@ -10,6 +10,7 @@ const updateOneclassById = handleCRUD.updateOneById(ClassModels);
 const deleteOneClassById = handleCRUD.deleteOneById(ClassModels);
 
 const addClass = (req,res)=>{
+    console.log(req.headers)
 
     
     const addNewClass = new ClassModels({
