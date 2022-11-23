@@ -14,7 +14,7 @@ const deleteOneStudentById = handleCRUD.deleteOneById(StudentModels);
 
 
 const importStudents = async (req,res)=>{
-        const emails  = req.body.emails.split(",");
+        const emails  = req.emails;
 
 
      
@@ -39,7 +39,7 @@ const importStudents = async (req,res)=>{
         await  UserModel.insertMany(students);
         // console.log(students);
         
-        
+        return res.send({message:"New emails Added"});
 }
 
 

@@ -1,34 +1,18 @@
-import UserModel from "../models/UserModels"
-import { hashPassword, isPasswordMatching } from "../utils/hashPassword";
-import status from "http-status";
-import { generateToken } from "../utils/token";
-import Response from "../utils/Response";
+import StudentModel from "../models/StudentModels";
+import status from "http-status"
+import {hashPassword} from "../utils/hashPassword"
 
-export const checkUser = async (req,res,next)=>{
-    let {email,password } = req.body
-  const user = await UserModel.findOne({ email});
-  if (!user){
-    req.body.password =hashPassword(password);
+    
+  const dataChecker = async (req,res,next)=>{
+    let {email } = req.body
+    console.log(emails);
+  const student = await StudentModel.findOne({email});
+  if (!student){
+    
     return next();
   }
-  return Response.errorMessage(res,"user already exist", status.CONFLICT)
+  return Response.errorMessage(res,"Email Already exist, Try another Email!", status.CONFLICT)
 };
 
-export const loginUser = async (req,res) => {
-  let {email,password } = req.body;
-  const user= await UserModel.findOne ({email});
-  if(!user){
-    return Response.errorMessage(res, "user/email don't exist", status.NOT_FOUND);
-  }
-  if (isPasswordMatching(password,user.password)){
-    user.password=null;
-    const token = generateToken({user});
-    return Response.succesMessage(
-      res,
-      "successfully logged in ",
-    {user,token},
-      status.OK
-    );
-  }
-  return Response.errorMessage(res, "Invalid Password", status.BAD_REQUEST);
-};
+export default dataChecker;
+
