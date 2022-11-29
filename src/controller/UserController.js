@@ -50,7 +50,6 @@ const login = async(req, res) =>{
         const email= req.body.email;
         
         const password= req.body.password;
-       
         const findUser = await User.findOne({email:email});
         if(findUser){
             const isPasswordValid = bcrypt.compareSync(password, findUser.password)
@@ -61,7 +60,7 @@ const login = async(req, res) =>{
                     email:findUser.email,
                     role: findUser.role
                 }});
-
+                
             }else{
                 res.status(404).send({message:"Incorrect email or password"});
             }
@@ -76,6 +75,46 @@ const login = async(req, res) =>{
     }
 }
 
+const getUserProfile =async (req,res) =>{
+    const user = await User.findById (req.headers._id);
+    if (user) {
+        res.json({
+            _id: user._id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phone: user.phone,
+            email: user.email
+        })
+    } else {
+        res.status(404).json({
+            success: false,
+            msg: 'user Not Found'
+        })
+    }
+}
+const updateUserProfile =async(req,res)=>{
+    const user = await User.findById(req.headers._id);
+    if(user){
+        user.firstName = req.body.firstName || user.firstName;
+        user.lastName = req.body.lastName || user.lastName;
+        user.email = req.body.email || user.email;
+
+        const updateUser = await user.save();
+
+        res.json({
+            _id: updateUser._id,
+            firstName: updateUser.firstName,
+            lastName: updateUser.lastName,
+            email: updateUser.email
+        })
+    } else {
+        res.status(404).json({
+            success: false,
+            msg: "User not found"
+        });
+    }
+}
 
 
-export default {createUser,getOneUser,getAllUser,updateOneUserById,deleteOneUserById,addMentor,login}
+
+export default {createUser,getOneUser,getAllUser,updateOneUserById,deleteOneUserById,addMentor,login,getUserProfile,updateUserProfile}
