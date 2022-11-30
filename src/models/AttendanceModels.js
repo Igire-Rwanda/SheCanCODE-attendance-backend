@@ -11,8 +11,9 @@ const attendanceSchema = new mongoose.Schema(
       ref: "Students",
     },
    
-    Duration:{
+    Date:{
         type:String,
+        // default:Date.now,
     },
     status: {
       type: String,
