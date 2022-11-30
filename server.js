@@ -48,7 +48,7 @@ const createSuperAdmin = async()=>{
   if(!findUser){
     const admin =  new User({
      email:process.env.EMAIL ,
-     password:bcrypt.hashSync(process.env.PASSWORD,10),
+    //  password:bcrypt.hashSync(process.env.PASSWORD,10),
      role:"SuperAdmin" 
   })
   admin.save();
