@@ -10,8 +10,7 @@ const studentSchema = new mongoose.Schema(
         
     },
       phone: {
-        type:String,
-        
+        type:String,  
     },
       email: {
           type:String,

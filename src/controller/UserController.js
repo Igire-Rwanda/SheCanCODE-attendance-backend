@@ -93,13 +93,13 @@ const getUserProfile =async (req,res) =>{
     }
 }
 const updateUserProfile =async(req,res)=>{
-    const user = await User.findById(req.headers._id);
+    const user = await User.findById(req.headers._id,{new:true});
     if(user){
         user.firstName = req.body.firstName || user.firstName;
         user.lastName = req.body.lastName || user.lastName;
         user.email = req.body.email || user.email;
 
-        const updateUser = await user.save();
+        const updateUser = await User.findOneAndUpdate({_id:req.headers._id},req.body);
 
         res.json({
             _id: updateUser._id,
