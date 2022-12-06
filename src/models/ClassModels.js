@@ -11,12 +11,13 @@ const ClassSchema = new mongoose.Schema(
         type:String,  
     },
       StartDate: {
-          type:String,
+          type:Date,
+          default:Date.now,
          
       },
       EndDate:{
-          type:String,
-          
+          type:Date,
+          default:Date.now,
       },
       Cohort:{
           type:String,
